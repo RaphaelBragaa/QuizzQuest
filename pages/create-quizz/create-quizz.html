@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/reset.css">
+    <link rel="stylesheet" href="../../styles/create.css">
+    <title>QuizzQuest</title>
+</head>
+<body>
+    <header>QuizzQuest</header>
+    <div id="perguntas" class="questionario">
+        <h1>Comece pelo começo</h1>
+        <form id="form" class="minHeight">          
+            <input type="text" id="fname1" name="fname" placeholder="Título do seu QuizzQuest">
+            <input type="text" id="fname2" name="fname" placeholder="URL da imagem do seu quizz">
+            <input type="text" id="fname3" name="fname" placeholder="Quantidade de perguntas do quizz">
+            <input type="text" id="fname4" name="fname" placeholder="Quantidade de níveis do quizz">
+        </form>
+        <submit onclick="myFunction()">Prosseguir pra criar perguntas</submit>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../../scripts/create-quizz.js"></script>
+</html>
