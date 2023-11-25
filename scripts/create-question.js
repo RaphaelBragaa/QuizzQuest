@@ -16,7 +16,6 @@ function AbrirForms(element){
  function FecharForms(element){
      let exit = element.closest('div');
      let form = element.closest('form');
-     //let open = element.closest('.icons');
             
      form.classList.add("subOculto")
      form.classList.remove("maxHeight")
@@ -24,74 +23,85 @@ function AbrirForms(element){
      form.classList.add("row")
  }
  
- function ValidarTitulo() {
-     const value = document.getElementById('fname1').value;
-     if (value.length >= 20) {
-       alert(value);
-       return true;
-     } else {
-       console.log("O texto da pergunta deve ter pelo menos 20 caracteres.");
-     }
-   }
- 
-   function ValidarCor(){
-     const value = document.getElementById('fname2').value;
-     
-     if (!padraoCor.test(value)) {
-         alert("A cor de fundo deve ser uma cor em hexadecimal.");
-         return true;
-       }
-   }
- 
-   function ValidarURL(){
-     const value = document.getElementById('fname4').value;
-     if(!padraoURL.test(value)){
-         alert("Invalid URL")   
-     }else{
-        return true;
-     }
-   }
- 
-   function validarRespostas() {
-    const resposta = document.querySelectorAll("fname3");
-  
-    let respostaCorreta = false;
-    for (let i = 0; i < resposta.length; i++) {
-      if (resposta[i].value != "") {
-        respostaCorreta = true;
-        console.log("resposta OK")
-      }
-       if (!respostaCorreta) {
-      alert("É obrigatória a inserção da resposta correta.");
+ function ValidarTitulo(form) {
+    const value = form.querySelector("#fname1").value;
+    if (value.length >= 20) {
+      return true;
+    } else {
+      alert("O texto da pergunta deve ter pelo menos 20 caracteres.");
       return false;
     }
-
+  }
+  
+  function ValidarCor(form) {
+    const value = form.querySelector("#fname2").value;
+  
+    if (!padraoCor.test(value)) {
+      alert("A cor de fundo deve ser uma cor em hexadecimal.");
+      return false;
+    } else {
+      return true;
     }
+  }
+  
+  function ValidarURL(form, classChoice) {
+    const value = form.querySelector("#" + classChoice).value;
+    if (!padraoURL.test(value)) {
+      alert("Invalid URL");
+      return false;
+    } else {
+      return true;
+    }
+  }
+  
+  function ValidarRespostas(form) {
+    const respostas = form.querySelectorAll("#fname3");
+  
+    for (let i = 0; i < respostas.length; i++) {
+      if (respostas[i].value === "") {
+        alert("É obrigatória a inserção da resposta correta.");
+        return false;
+      }
+    }
+  
     return true;
-  } 
-  function validarIncorreta(){
-        const incorreta = document.querySelectorAll("fname5");
-        let incorretaLista = [];
-        for (let i = 0; i < incorreta.length; i++){
-            if (incorreta[i].value != "") {
-                incorretaLista.push(incorreta[i].value);
-                respostaCorreta = true;
-                if(incorretaLista.length >= 2){
-                    return true;  
-                }   
-              }else{
-                alert("Deve ter no mínimo duas respostas incorretas");
-              }
-        }
+  }
 
+  
+  function ValidarIncorreta(form) {
+    const incorretas = form.querySelectorAll("#fname5");
+  
+    if (incorretas.length < 2) {
+      alert("Deve ter no mínimo duas respostas incorretas");
+      return false;
     }
-function ValidadeFinal(){
-    if(ValidarCor() == true && ValidarTitulo() == true && validarRespostas() == true && validarIncorreta() == true){
-        alert('SUCESSO')
-    }else{
-        alert('FALHA')
+  
+    return true;
+  }
+
+  function ValidadeFinal() {
+    const forms = document.querySelectorAll("#form");
+  
+    for (let i = 0; i < forms.length; i++) {
+      const form = forms[i];
+  
+      if (
+        !ValidarTitulo(form) ||
+        !ValidarCor(form) ||
+        !ValidarURL(form, "fname4") ||
+        !ValidarURL(form, "fname6") ||
+        !ValidarURL(form, "fname7") ||
+        !ValidarRespostas(form) ||
+        !ValidarIncorreta(form)
+      ) {
+        alert("Falha na validação do formulário " + (i + 1));
+        return;
+      }
     }
-}
+
+    alert("SUCESSO");
+  }
+      
 
 function MostrarPerguntas(){
    pergunta = 4
@@ -103,18 +113,18 @@ for (let i = 1; i <= pergunta; i++){
             <form id="form" class="row subOculto">          
                 <label for="fname" >Pergunta ${i} </label>
                 <img id="open" onclick="AbrirForms(this)" class="icons" src="../../images/icons/Vector.svg">
-                <input onclick="selecionarElemento(this)" type="text" id="fname1" name="fname" placeholder="Texto da Pergunta">
-                <input onclick="selecionarElemento(this)" type="text" id="fname2" name="fname" placeholder="Cor da Pergunta">
+                <input  type="text" id="fname1" name="fname" placeholder="Texto da Pergunta">
+                <input  type="text" id="fname2" name="fname" placeholder="Cor da Pergunta">
                 <label class="subLabel" for="fname">Resposta correta</label>
-                <input onclick="selecionarElemento(this)" type="text" id="fname3" name="fname" placeholder="Resposta Corrreta">
-                <input onclick="selecionarElemento(this)" type="text" id="fname4" name="fname" placeholder="URL da Imagem">
+                <input  type="text" id="fname3" name="fname" placeholder="Resposta Corrreta">
+                <input  type="text" id="fname4" name="fname" placeholder="URL da Imagem">
                 <label class="subLabel" for="fname">Resposta incorreta</label>
-                <input onclick="selecionarElemento(this)" type="text" id="fname5" name="fname" placeholder="Resposta incorreta 1">
-                <input onclick="selecionarElemento(this)" type="text" id="fname" name="fname" placeholder="URL da Imagem 1">
-                <input onclick="selecionarElemento(this)" type="text" id="fname5" name="fname" placeholder="Resposta incorreta 2">
-                <input onclick="selecionarElemento(this)" type="text" id="fname" name="fname" placeholder="URL da Imagem 2">
-                <input onclick="selecionarElemento(this)" type="text" id="fname5" name="fname" placeholder="Resposta incorreta 3">
-                <input onclick="selecionarElemento(this)" type="text" id="fname" name="fname" placeholder="URL da Imagem 3"></input>
+                <input  type="text" id="fname5" name="fname" placeholder="Resposta incorreta 1">
+                <input  type="text" id="fname6" name="fname" placeholder="URL da Imagem 1">
+                <input  type="text" id="fname5" name="fname" placeholder="Resposta incorreta 2">
+                <input  type="text" id="fname7" name="fname" placeholder="URL da Imagem 2">
+                <input  type="text" id="fname5" name="fname" placeholder="Resposta incorreta 3">
+                <input  type="text" id="fname" name="fname" placeholder="URL da Imagem 3"></input>
                 <div id="exit" onclick="FecharForms(this)" class="minimize"><ion-icon name="chevron-up-outline"></ion-icon></div>
             </form>
         `
@@ -123,4 +133,4 @@ for (let i = 1; i <= pergunta; i++){
 }
             }
 
-MostrarPerguntas()
+MostrarPerguntas();
