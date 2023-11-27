@@ -112,15 +112,18 @@ function renderizarTelaDeCarregamento() {
 
 //ARMAZENA O IDENTIFICADOR DO QUIZZ 
 function LocalIdd(element){
+
   if(!localStorage.getItem("id")){
     localStorage.setItem('id', element)
     IDdoQuizdoServidor = localStorage.getItem("id");
     console.log(IDdoQuizdoServidor + " sucesso")
+    location.href = "./pages/execution-quizz/execution-quizz.html";
   }else{
     localStorage.removeItem("id");
     localStorage.setItem('id', element)
     IDdoQuizdoServidor = localStorage.getItem("id");
     console.log(IDdoQuizdoServidor + " else")
+    location.href = "./pages/execution-quizz/execution-quizz.html";
   }
 
 }
