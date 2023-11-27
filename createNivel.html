@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizzQuest</title>
+    <link rel="icon" type="image/x-icon" href="images/icons/logo.png">
+    <style>
+        .formulario {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="styles/createQuiz.css">
+</head>
+<body>
+    <header class="header" >
+        <img src="images/icons/logo.png" alt="">        
+    </header>
+    <button onclick="mostrarFormulario('formulario1')">Mostrar Formulário 1</button>
+    <div id="formulario1" class="formulario">
+        <form>
+            <input type="text" id="titulo" class="input" name="campo2" placeholder="Titulo do nivel" >
+            <input type="number" id="porcentagem" class="input" name="campo2" placeholder="% de acerto minima" min="0" max="100" step="0.01">
+            <input type="url" id="url_img" class="input" name="campo1" placeholder="url da imagem">
+            <input type="text" id="descricaoquiz" class="input" name="descricaoquiz" placeholder="descrição do quiz">
+            
+        <!-- Adicione outros campos conforme necessário -->
+        </form>
+    </div>
+
+    <script>
+        function mostrarFormulario(idFormulario) {
+            // Oculta todos os formulários
+            var formularios = document.querySelectorAll('.formulario');
+            formularios.forEach(function(formulario) {
+                formulario.style.display = 'none';
+            });
+
+            // Exibe o formulário específico
+            var formularioSelecionado = document.getElementById(idFormulario);
+            formularioSelecionado.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
