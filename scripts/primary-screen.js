@@ -85,7 +85,7 @@ function renderizarQuizzesTodos() {
       lista.innerHTML += `
             <li class="quizz">
                 <img src=${image} alt="">
-                <div class="gradiente" onclick="(() => {IDdoQuizdoServidor = id})"></div>
+                <div class="gradiente" onclick="(() => {localStorage.setItem("id", quizzesServidor[i].id)})"></div>
                 <h3>${title}</h3>
             </li>`;
     }
