@@ -4,7 +4,10 @@ const TEMPO_1S = 1;
 let acertos = 0;
 let questoesRespondidas = 0;
 let totalPerguntas;
+let quizz = localStorage.getItem("id");
+let message;
 
+//SELECIONAR O QUIZZ APARTIR DE SEU ID QUE E FORNECIDO PELO LOCAL ESTORAGE DA TELA DE LISTA DE QUIZZ
 function selecionarQuizz(quizz) {
     const promise = axios.get(`https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${quizz}`)
     promise.then(function(response){
@@ -14,6 +17,7 @@ function selecionarQuizz(quizz) {
     });
 }
 
+//EXIBIR BANNER COM CAPA E TÍTULO DO QUIZZ
 function inserirBanner() {
     console.log(quizzSelecionado)
     document.querySelector(".banner-quizz").innerHTML += `
@@ -22,6 +26,7 @@ function inserirBanner() {
     `
 }
 
+//GERA AS PERGUNTAS DINÂMICAMENTE APARTIR DA ARRAY DE OBJETOS FORNECIDA PELA API
 function gerarPerguntas(){
     const perguntas = quizzSelecionado.questions;
     console.log(perguntas)
@@ -61,6 +66,7 @@ function gerarPerguntas(){
     }
 } 
 
+//APÓS A SELEÇÃO DA OPÇÃO ESSA FUNÇÃO ANALISA AQUELA OPÇÃO
 function mostrarRespostas(resposta){
     verificarResposta(resposta)
     resposta.parentNode.querySelector(".certa").classList.add("verde");
@@ -82,6 +88,7 @@ function mostrarRespostas(resposta){
     verificarSeRespondeuTudo();
 }
 
+//CONTABILIZA A QUANTIDADE DE ACERTOS DO USUARIO
 function verificarResposta(elemento) {
     elementoclicado = elemento;
      
@@ -92,8 +99,18 @@ function verificarResposta(elemento) {
     console.log(acertos)
   }
 
+  //EXIBE O RESULTADO FINAL DO QUIZZ
   function inserirTelaFinal() {
     let porcentagemAcerto = (acertos/totalPerguntas)*100;
+
+    if(porcentagemAcerto.toFixed(2) == 100){
+        message = "Parabéns"
+    }else if(porcentagemAcerto.toFixed(2) >= 50){
+        message = "Pode Melhorar"
+    }else if(porcentagemAcerto.toFixed(2) <= 49){
+        message = "Estude Mais !"
+    }
+
     const result = document.querySelector(".conteiner-result")
     result.classList.remove("oculto")
     result.innerHTML += `
@@ -103,7 +120,7 @@ function verificarResposta(elemento) {
         </div>
         <div class="result">
         <h1>
-        ${porcentagemAcerto.toFixed(2)}% de acerto: Parabéns
+        ${porcentagemAcerto.toFixed(2)}% de acerto: ${message}
         </h1>
         </div>
     </div>
@@ -111,6 +128,7 @@ function verificarResposta(elemento) {
     exibitionButtons()
   }
 
+//VERIFICA TO TODAS AS PERGUNTAS FORAM RESPONDIDAS
   function verificarSeRespondeuTudo() {
     questoesRespondidas += 1;
     if (questoesRespondidas === totalPerguntas) {
@@ -119,13 +137,18 @@ function verificarResposta(elemento) {
     }
   }
 
+  //EXIBI OS BOTÕES DE REINICIAR E VOLTAR PARA O HOME 
   function exibitionButtons(){
      document.getElementById('buttons').innerHTML += `
-     <submit class="button"> Reiniciar Quizz</submit>
+     <submit onclick="reniciarQuizz()" class="button"> Reiniciar Quizz</submit>
     <h1 class="subtitle"><a href="../../index.html">Voltar pra home</a></h1>
      `;
+  }
 
+  //ZERA O QUIZZ
+  function reniciarQuizz() {
+    window.location.reload();
   }
 
 
-selecionarQuizz(55);
+selecionarQuizz(quizz);
