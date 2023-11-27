@@ -121,10 +121,13 @@ function verificarResposta(elemento) {
 
   function exibitionButtons(){
      document.getElementById('buttons').innerHTML += `
-     <submit class="button"> Reiniciar Quizz</submit>
+     <submit onclick="reniciarQuizz()" class="button"> Reiniciar Quizz</submit>
     <h1 class="subtitle"><a href="../../index.html">Voltar pra home</a></h1>
      `;
+  }
 
+  function reniciarQuizz() {
+    window.location.reload();
   }
 
 
