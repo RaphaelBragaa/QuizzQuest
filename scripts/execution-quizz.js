@@ -91,17 +91,16 @@ function mostrarRespostas(resposta){
 //CONTABILIZA A QUANTIDADE DE ACERTOS DO USUARIO
 function verificarResposta(elemento) {
     elementoclicado = elemento;
-     
-    const elementoCerta = document.querySelector(".certa");
-    if (elementoclicado === elementoCerta) {
+    if (elementoclicado.classList.contains("certa")) {
       acertos += 1;
     }
-    console.log(acertos)
+    console.log(acertos + " ACERTO")
   }
 
   //EXIBE O RESULTADO FINAL DO QUIZZ
   function inserirTelaFinal() {
     let porcentagemAcerto = (acertos/totalPerguntas)*100;
+    console.log(porcentagemAcerto)
 
     if(porcentagemAcerto.toFixed(2) == 100){
         message = "Parabéns"
