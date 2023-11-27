@@ -7,6 +7,7 @@ let quizzesServidor;
 
 carregarPagina1();
 
+//SOLICITA API OS QUIZZES
 function carregarPagina1() {
   const promiseQuizzes = axios.get(
     "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
@@ -15,6 +16,7 @@ function carregarPagina1() {
   renderizarTelaDeCarregamento();
 }
 
+//RENDERIZA TODOS OS QUIZZES NA TELA 
 function renderizarQuizzes(response) {
   body.innerHTML = `<header> 	<img src="/images/quiz.png" class="logo"  onclick="carregarPagina1() > "></header>
         <main class="page1"></main>`;
@@ -30,6 +32,8 @@ function renderizarQuizzes(response) {
   }
   renderizarQuizzesTodos();
 }
+
+//RENDERIZA QUIZZES CRIADOS PELO USUARIO
 function renderizarQuizzesUsuario() {
   page1.innerHTML += `<div class="quiz quiz--usuario">
             <div class="cabecalho"><h2>Seus Quizzes</h2><ion-icon onclick="carregarPagina3()" name="add-circle"></ion-icon></div>
@@ -62,6 +66,7 @@ function renderizarQuizzesUsuario() {
   }
 }
 
+//RENDERIZA OS QUIZZES NOVOS
 function renderizarQuizzesNovos() {
   page1.innerHTML += `<div class="quiz quiz--novo">
             <p>Você não criou nenhum quizz ainda :(</p>
@@ -69,6 +74,7 @@ function renderizarQuizzesNovos() {
         </div>`;
 }
 
+//RENDERIZA TODOS OS QUIZZES
 function renderizarQuizzesTodos() {
   page1.innerHTML += `<h2 class="h2">TODOS OS QUIZZES</h2>
    <div class=" quiz--todos">
@@ -81,18 +87,19 @@ function renderizarQuizzesTodos() {
       const image = quizzesServidor[i].image;
       const title = quizzesServidor[i].title;
       const lista = document.querySelector(".quiz--todos .quiz__lista");
-
       lista.innerHTML += `
             <li class="quizz">
                 <img src=${image} alt="">
-                <div class="gradiente" onclick="(() => {localStorage.setItem("id", quizzesServidor[i].id)})"></div>
+                <div class="gradiente" onclick="LocalIdd(${quizzesServidor[i].id})"></div>
                 <h3>${title}</h3>
             </li>`;
     }
   }
 
-  console.log(IDdoQuizdoServidor)
+  console.log(localStorage.getItem("id"))
 }
+
+//RENDERIZA A TELA PRÉ LISTA DE QUIZZES
 function renderizarTelaDeCarregamento() {
   body.innerHTML = `
         <header><h1>BuzzQuizz</h1></header>
@@ -103,4 +110,18 @@ function renderizarTelaDeCarregamento() {
     `;
 }
 
+//ARMAZENA O IDENTIFICADOR DO QUIZZ 
+function LocalIdd(element){
+  if(!localStorage.getItem("id")){
+    localStorage.setItem('id', element)
+    IDdoQuizdoServidor = localStorage.getItem("id");
+    console.log(IDdoQuizdoServidor + " sucesso")
+  }else{
+    localStorage.removeItem("id");
+    localStorage.setItem('id', element)
+    IDdoQuizdoServidor = localStorage.getItem("id");
+    console.log(IDdoQuizdoServidor + " else")
+  }
+
+}
 // Assuming this code is in a module
