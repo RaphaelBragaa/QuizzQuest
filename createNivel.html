@@ -29,21 +29,6 @@
             </div>
             <BUtton class="btn-inicio" onclick="validaCampos()">Prosseguir para criar perguntas</BUtton>
         </div>
-    <script>
-        function mostrarFormulario(idFormulario) {
-            // Oculta todos os formulários
-            var formularios = document.querySelectorAll('.formulario');
-            formularios.forEach(function(formulario) {
-                formulario.style.display = 'none';
-            });
-
-            // Exibe o formulário específico
-            var formularioSelecionado = document.getElementById(idFormulario);
-            formularioSelecionado.style.display = 'flex';
-            var iconEditar = document.getElementById("icon-editar");
-            iconEditar.style.display = 'none';
-            
-        }
-    </script>
+    <script src="scripts/create-nivel.js"></script>
 </body>
 </html>
