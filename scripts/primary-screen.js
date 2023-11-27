@@ -1,7 +1,10 @@
+//export {IDdoQuizdoServidor};
+
+let IDdoQuizdoServidor;
 const body = document.querySelector("body");
 let page1;
 let quizzesServidor;
-let IDdoQuizdoServidor;
+
 carregarPagina1();
 
 function carregarPagina1() {
@@ -77,17 +80,18 @@ function renderizarQuizzesTodos() {
     if (listaDeIDs == null || !listaDeIDs.includes(quizzesServidor[i].id)) {
       const image = quizzesServidor[i].image;
       const title = quizzesServidor[i].title;
-      IDdoQuizdoServidor = quizzesServidor[i].id;
       const lista = document.querySelector(".quiz--todos .quiz__lista");
 
       lista.innerHTML += `
             <li class="quizz">
                 <img src=${image} alt="">
-                <div class="gradiente" onclick="geraQuiz(${IDdoQuizdoServidor})"></div>
+                <div class="gradiente" onclick="(() => {IDdoQuizdoServidor = id})"></div>
                 <h3>${title}</h3>
             </li>`;
     }
   }
+
+  console.log(IDdoQuizdoServidor)
 }
 function renderizarTelaDeCarregamento() {
   body.innerHTML = `
@@ -98,4 +102,5 @@ function renderizarTelaDeCarregamento() {
         </div>
     `;
 }
+
 // Assuming this code is in a module
