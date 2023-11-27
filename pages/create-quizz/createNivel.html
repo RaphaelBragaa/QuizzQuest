@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizzQuest</title>
+    <link rel="stylesheet" href="styles/createQuiz.css">
+    <link rel="icon" type="image/x-icon" href="images/icons/logo.png">
+
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<body>
+    <header class="header" >
+        <img src="images/icons/logo.png" alt="">        
+    </header>
+    <div class="container-perguntas">
+        <button class="btn-form" onclick="mostrarFormulario('formulario1')"><strong>Nível 1</strong><i class="bi bi-pencil-square" id="icon-editar"></i></i></button>
+        <div id="formulario1" class="formulario">
+            <form>
+                <div>
+                        <input type="text" id="titulo" class="input" name="campo2" placeholder="Titulo do nivel" >
+                        <input type="text" id="porcentagem" class="input" name="campo2" inputmode="numeric" placeholder="% de acerto mínima" step="5" maxlength="2" >
+                        <input type="url" id="url_img" class="input" name="campo1" placeholder="url da imagem">
+                        <input type="text" id="descricaoquiz" class="input" name="descricaoquiz" placeholder="descrição do quiz">
+                    </div>
+                    
+                </form>
+            </div>
+            <BUtton class="btn-inicio" onclick="validaCampos()">Prosseguir para criar perguntas</BUtton>
+        </div>
+    <script src="scripts/create-nivel.js"></script>
+</body>
+</html>

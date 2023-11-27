@@ -2,6 +2,8 @@ let pergunta;
 let analise = []
 const padraoURL = /^https?:\/\/.+\/.+$/
  const padraoCor = /^#[0-9A-Fa-f]{6}$/
+ const Dados = JSON.parse(localStorage.getItem("objectScreen01"))
+ console.log(Dados)
 
 function AbrirForms(element){
     let icon = element.closest('.icons');
@@ -133,4 +135,4 @@ for (let i = 1; i <= pergunta; i++){
 }
             }
 
-MostrarPerguntas();
+MostrarPerguntas(Dados.qtdePerguntas);

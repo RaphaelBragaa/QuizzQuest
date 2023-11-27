@@ -70,7 +70,7 @@ function renderizarQuizzesUsuario() {
 function renderizarQuizzesNovos() {
   page1.innerHTML += `<div class="quiz quiz--novo">
             <p>Você não criou nenhum quizz ainda :(</p>
-            <div class="button" >Criar Quizz</div>
+            <div onclick="aviso()" class="button" >Criar Quizz</div>
         </div>`;
 }
 
@@ -126,5 +126,9 @@ function LocalIdd(element){
     location.href = "./pages/execution-quizz/execution-quizz.html";
   }
 
+}
+
+function aviso(){
+  alert("Em breve")
 }
 // Assuming this code is in a module

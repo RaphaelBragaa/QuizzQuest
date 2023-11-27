@@ -1,0 +1,117 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    background-color: white;
+    position: relative;
+}
+
+.formulario {
+    width: max-content;
+    display: none;
+    margin-top: 10px;
+}
+form {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form div{
+    max-width: 500px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: red;
+    width: 100%;
+}
+
+.header img {
+    height: 150px;
+}
+
+.container-perguntas {
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.input {
+    
+    /* border: solid 1px rgb(139, 139, 139);
+    border-radius: 4px;
+    font-family: sans-serif;
+    width: 100%;
+    margin: 5px;
+    height: 30px; */
+    border-radius: 4px;
+
+    cursor: pointer;
+    background-color: white;
+    left: 8px;
+    border: solid 1px #D6D6D6;
+    margin: 10px 10px 15px;
+    width: 100%;
+    max-width: 506px;
+    height: 40px;
+}
+.container-perguntas label{
+    margin: 15px;
+}
+input::placeholder {
+    font-style: italic;
+}
+.btn-inicio {
+    margin: 50px;
+    cursor: pointer;
+    border: solid 1px rgba(255, 0, 0, 0.599);
+    color: white;
+    background-color: #EC362D;    
+    border-radius: 6px;
+    width: 55%;
+    max-width: 355px;
+    height: 30px;
+}
+
+.container-perguntas h1 {
+    font-size: 24px;
+    margin: 110px 5px;
+}
+
+.btn-form {
+    cursor: pointer;
+    background-color: white;
+    left: 8px;
+    border: solid 1px rgb(255, 255, 255);
+    margin: 15px 10px 0px;
+    width: 100%;
+    max-width: 506px;
+    height: 40px;
+}
+
+
+.btn-form {
+    position: relative;
+}
+
+.btn-form strong {
+    margin: 0;
+    position: relative;
+    right:40%;
+}
+
+.btn-form i.bi {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}

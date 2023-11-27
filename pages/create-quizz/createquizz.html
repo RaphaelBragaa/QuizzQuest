@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizzQuest</title>
+    <link rel="icon" type="image/x-icon" href="images/icons/logo.png">
+    <link rel="stylesheet" href="../../styles/reset.css">
+    <link rel="stylesheet" href="../../styles/createQuiz.css">
+</head>
+<body>
+    <header class="header" >
+        <img src="../../images/logo/logo.png" alt="">        
+    </header>
+    <form class="container-perguntas">
+        <h1 ><strong>Comece pelo começo</strong></h1>
+        <div>
+        <input id= "txb-Titulo" class="input" type="text" placeholder="Título do quiz">
+        <input id="txb-url" class="input" type="url" placeholder="URL da imagem">
+        <input id="txb-niveis" class="input" type="number" placeholder="Nivel do Quiz">
+        <input id="txb-qt-perguntas" class="input" type="number" placeholder=" Quantidade de perguntas">
+    </div>
+        <BUtton class="btn-inicio" onclick="validaCampos()">Prosseguir para criar perguntas</BUtton>
+        <!-- <input type="button" class="btn-inicio" value="Prosseguir para criar perguntas" onclick="enviarForm()"> -->
+    </form>
+    <script src="../../scripts/create-quiz.js"> </script>
+</body>
+</html>
