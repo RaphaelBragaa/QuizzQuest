@@ -13,15 +13,13 @@
         <img src="images/icons/logo.png" alt="">        
     </header>
     <form class="container-perguntas">
-        <h1 >Comece pelo começo</h1>
-        <label for="txb-Titulo">Titulo do Quiz</label>
-        <input id= "txb-Titulo" class="input" type="text">
-        <label for="txb-url">URL da imagem</label>
-        <input id="txb-url" class="input" type="url">
-        <label for="txb-niveis">Nivel do Quiz</label>
-        <input id="txb-niveis" class="input" type="number">
-        <label for="txb-qt-perguntas">Quantidade de perguntas</label>
-        <input id="txb-qt-perguntas" class="input" type="number">
+        <h1 ><strong>Comece pelo começo</strong></h1>
+        <div>
+        <input id= "txb-Titulo" class="input" type="text" placeholder="Título do quiz">
+        <input id="txb-url" class="input" type="url" placeholder="URL da imagem">
+        <input id="txb-niveis" class="input" type="number" placeholder="Nivel do Quiz">
+        <input id="txb-qt-perguntas" class="input" type="number" placeholder=" Quantidade de perguntas">
+    </div>
         <BUtton class="btn-inicio" onclick="validaCampos()">Prosseguir para criar perguntas</BUtton>
         <!-- <input type="button" class="btn-inicio" value="Prosseguir para criar perguntas" onclick="enviarForm()"> -->
     </form>

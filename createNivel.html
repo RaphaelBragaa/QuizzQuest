@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizzQuest</title>
-    <link rel="icon" type="image/x-icon" href="images/icons/logo.png">
-    <style>
-        .formulario {
-            display: none;
-            margin-top: 10px;
-        }
-    </style>
     <link rel="stylesheet" href="styles/createQuiz.css">
+    <link rel="icon" type="image/x-icon" href="images/icons/logo.png">
+
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
     <header class="header" >
         <img src="images/icons/logo.png" alt="">        
     </header>
-    <button onclick="mostrarFormulario('formulario1')">Mostrar Formulário 1</button>
-    <div id="formulario1" class="formulario">
-        <form>
-            <input type="text" id="titulo" class="input" name="campo2" placeholder="Titulo do nivel" >
-            <input type="number" id="porcentagem" class="input" name="campo2" placeholder="% de acerto minima" min="0" max="100" step="0.01">
-            <input type="url" id="url_img" class="input" name="campo1" placeholder="url da imagem">
-            <input type="text" id="descricaoquiz" class="input" name="descricaoquiz" placeholder="descrição do quiz">
-            
-        <!-- Adicione outros campos conforme necessário -->
-        </form>
-    </div>
-
+    <div class="container-perguntas">
+        <button class="btn-form" onclick="mostrarFormulario('formulario1')"><strong>Nível 1</strong><i class="bi bi-pencil-square" id="icon-editar"></i></i></button>
+        <div id="formulario1" class="formulario">
+            <form>
+                <div>
+                        <input type="text" id="titulo" class="input" name="campo2" placeholder="Titulo do nivel" >
+                        <input type="text" id="porcentagem" class="input" name="campo2" inputmode="numeric" placeholder="% de acerto mínima" step="5" maxlength="2" >
+                        <input type="url" id="url_img" class="input" name="campo1" placeholder="url da imagem">
+                        <input type="text" id="descricaoquiz" class="input" name="descricaoquiz" placeholder="descrição do quiz">
+                    </div>
+                    
+                </form>
+            </div>
+            <BUtton class="btn-inicio" onclick="validaCampos()">Prosseguir para criar perguntas</BUtton>
+        </div>
     <script>
         function mostrarFormulario(idFormulario) {
             // Oculta todos os formulários
@@ -39,7 +39,10 @@
 
             // Exibe o formulário específico
             var formularioSelecionado = document.getElementById(idFormulario);
-            formularioSelecionado.style.display = 'block';
+            formularioSelecionado.style.display = 'flex';
+            var iconEditar = document.getElementById("icon-editar");
+            iconEditar.style.display = 'none';
+            
         }
     </script>
 </body>
